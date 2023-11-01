@@ -27,7 +27,6 @@ class AddEditTodoViewModel @Inject constructor(
 		private set
 	private val _uiEvent = Channel<UiEvent>()
 	val uiEvent = _uiEvent.receiveAsFlow()
-
 	init {
 		val todoId = savedStateHandle.get<Int>("todoId")
 		if (todoId != -1) {
@@ -43,7 +42,6 @@ class AddEditTodoViewModel @Inject constructor(
 
 		}
 	}
-
 	fun onEvent(event : AddEditTodoEvent) {
 		when (event) {
 			is AddEditTodoEvent.OnDescriptionChange -> {
@@ -69,19 +67,14 @@ class AddEditTodoViewModel @Inject constructor(
 				}
 
 			}
-
 			is AddEditTodoEvent.OnTitleChange       -> {
 				title = event.title
 			}
 		}
-
 	}
-
 	private fun sendUiEvent(event : UiEvent) {
 		viewModelScope.launch {
 			_uiEvent.send(event)
 		}
 	}
-
-
 }
