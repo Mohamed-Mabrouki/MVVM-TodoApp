@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 	version = 1
 )
 
-abstract class TodoDatabase :RoomDatabase() {
+abstract class TodoDatabase() :RoomDatabase() {
 	abstract val dao:TodoDao
 
 
